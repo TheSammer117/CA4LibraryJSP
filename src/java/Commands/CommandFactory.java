@@ -32,7 +32,7 @@ public class CommandFactory {
         if (action != null) {
             switch (action) {
                 case "viewBooks":
-                    
+                    command = new ViewTitlesCommand();
                     break;
                 case "searchBook":
                     
