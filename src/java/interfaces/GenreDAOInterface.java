@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *Team: Hernel Provido, Sami Mahmoud, Haiyun Yu 
- * @author Haiyun Yu d00188956
+ *  @author Hernel Provido d00182295
  */
 public interface GenreDAOInterface {
     //add a new genre

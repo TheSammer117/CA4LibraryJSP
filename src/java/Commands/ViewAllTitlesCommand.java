@@ -6,6 +6,8 @@
 package Commands;
 
 import DAOs.TitleDAO;
+import DTOs.Title;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author omy
  */
-public class ViewTitlesCommand  implements Command{
+public class ViewAllTitlesCommand  implements Command{
 
     @Override
     public String exceute(HttpServletRequest request, HttpServletResponse response) {
@@ -22,8 +24,11 @@ public class ViewTitlesCommand  implements Command{
        //to use a parameterized version of the DAO claas
        
        TitleDAO tDAO = new TitleDAO("librarydb");
+       //get all titles from the database and store all titles into one arraylist
+       ArrayList<Title> tList = tDAO.getAllTitles();
+       //add the retrieved list to the session so that the JSP can access it and display all inforamtion;
        
-       //if the string title getting any feedback
+       
         return null;
        
     }
