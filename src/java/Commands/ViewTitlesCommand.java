@@ -18,11 +18,13 @@ public class ViewTitlesCommand  implements Command{
     @Override
     public String exceute(HttpServletRequest request, HttpServletResponse response) {
        String forwardToJsp = "";
-       //to get all the titles
+       //create a titileDAO and retrieve all titles from the database.
+       //to use a parameterized version of the DAO claas
+       
        TitleDAO tDAO = new TitleDAO("librarydb");
        
-       
        //if the string title getting any feedback
+        return null;
        
     }
     

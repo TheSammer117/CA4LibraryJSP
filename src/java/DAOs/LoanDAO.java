@@ -21,6 +21,10 @@ import interfaces.LoanDAOInterface;
  */
 public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
 
+    public LoanDAO(String databaseName) {
+        super(databaseName);
+    }
+
     /**
      * This will add a loan object to the db<p>
      *
@@ -31,7 +35,7 @@ public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
     public int addLoan(Loan loan) {
         Connection conn = null;
         PreparedStatement ps = null;
-        TitleDAO td = new TitleDAO();
+        TitleDAO td = new TitleDAO("librarydb");
         ResultSet generatedKeys = null;
         int newId = -1;
         if (td.checkAvailability(loan.getLoanID())) {
@@ -101,8 +105,8 @@ public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Loan loan = null;
-        UserDAO ud = new UserDAO();
-        TitleDAO td = new TitleDAO();
+        UserDAO ud = new UserDAO("librarydb");
+        TitleDAO td = new TitleDAO("librarydb");
         ArrayList<Loan> loanList = new ArrayList();
 
         try {
@@ -156,7 +160,7 @@ public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Loan loan = null;
-        TitleDAO td = new TitleDAO();
+        TitleDAO td = new TitleDAO("librarydb");
 
         try {
             conn = getConnection();
@@ -246,8 +250,8 @@ public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Loan loan = null;
-        UserDAO ud = new UserDAO();
-        TitleDAO td = new TitleDAO();
+        UserDAO ud = new UserDAO("librarydb");
+        TitleDAO td = new TitleDAO("librarydb");
         ArrayList<Loan> loanList = new ArrayList();
 
         try {
@@ -305,8 +309,8 @@ public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Loan loan = null;
-        UserDAO ud = new UserDAO();
-        TitleDAO td = new TitleDAO();
+        UserDAO ud = new UserDAO("librarydb");
+        TitleDAO td = new TitleDAO("librarydb");
 
         try {
             conn = getConnection();

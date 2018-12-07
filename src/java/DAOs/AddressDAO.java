@@ -20,6 +20,10 @@ import interfaces.AddressDAOInterface;
  */
 public class AddressDAO extends DatabaseConnection implements AddressDAOInterface {
 
+    public AddressDAO(String databaseName) {
+        super(databaseName);
+    }
+
     @Override
     public boolean addAddress(int userID, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode) {
         Connection conn = null;
@@ -86,7 +90,7 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
         PreparedStatement ps = null;
         ResultSet rs = null;
         Address address = null;
-        UserDAO ud = new UserDAO();
+        UserDAO ud = new UserDAO("librarydb");
         ArrayList<Address> addresses = new ArrayList<>();
         
         try{

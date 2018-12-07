@@ -25,6 +25,10 @@ import java.util.logging.Logger;
  */
 public class UserDAO extends DatabaseConnection implements UserDAOInterface {
 
+    public UserDAO(String databaseName) {
+        super(databaseName);
+    }
+
     @Override
     public int login(String email, String password) {
         // Required for DB interaction
@@ -85,7 +89,7 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet generatedKeys = null;
-        AddressDAO ad = new AddressDAO();
+        AddressDAO ad = new AddressDAO("librarydb");
         int newId = -1;
 
         try {
@@ -319,7 +323,7 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet generatedKeys = null;
-        AddressDAO ad = new AddressDAO();
+        AddressDAO ad = new AddressDAO("librarydb");
         int newId = -1;
 
         try {

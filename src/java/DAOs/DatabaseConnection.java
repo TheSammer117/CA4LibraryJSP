@@ -14,6 +14,13 @@ import java.sql.SQLException;
  * @author d00182295
  */
 public class DatabaseConnection {
+    
+    private String databaseName;
+    
+    public DatabaseConnection (String databaseName)
+    {
+        this.databaseName = databaseName;
+    }
 
     public Connection getConnection(){
         String driver = "com.mysql.jdbc.Driver";

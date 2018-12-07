@@ -22,6 +22,9 @@ import java.util.List;
  */
 public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
 
+    public TitleDAO(String databaseName) {
+        super(databaseName);
+    }
     /**
      * Initialise a TitleDao to access the specified database name
      *
@@ -432,18 +435,7 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
             if (rs != null) {
                 check = true;
             }
-            
-
-            /**
-             * } else if (options.equalsIgnoreCase("decrease")) { String query2
-             * = "update title set stock = stock - ? where titleID = ? "; ps =
-             * con.prepareStatement(query2); ps.setInt(1, stock); ps.setInt(2,
-             * titleID); rs = ps.executeQuery(); if (rs != null) { check = true;
-             * } check = true;
-             *
-             * }
-             */
-        } catch (SQLException e) {
+      } catch (SQLException e) {
             System.out.println("Exception occured in the changeStock() method: " + e.getMessage());
         } finally {
             try {

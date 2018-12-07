@@ -22,6 +22,10 @@ import interfaces.TitleGenreDAOInterface;
  */
 
 public class TitleGenreDAO extends DatabaseConnection implements TitleGenreDAOInterface {
+
+    public TitleGenreDAO(String databaseName) {
+        super(databaseName);
+    }
     
      /**
      * Initialise a TitlegenreDao to access the specified database name

@@ -22,6 +22,10 @@ import java.util.List;
 
 public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
 
+    public GenreDAO(String databaseName) {
+        super(databaseName);
+    }
+
     /**
      * Initialise a GenreDao to access the specified database name
      *
