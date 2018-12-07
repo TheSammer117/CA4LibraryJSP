@@ -30,32 +30,42 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
     }
 
     @Override
-    public int login(String email, String password) {
+    public User login(String e_mail, String p_assword) {
         // Required for DB interaction
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        int result = 0;
-        List<User> users = new ArrayList();
-        if (email != null && password != null) {
+        User u = null;
+        if (e_mail != null && p_assword != null) {
             try {
-                con = getConnection();
+                con = this.getConnection();
                 // Make query
                 String query = "SELECT * FROM user WHERE email = ? AND password = ?";
                 // Compile into SQL
                 ps = con.prepareStatement(query);
                 // (Fill in blanks of query)
-                ps.setString(1, email);
-                ps.setString(2, password);
+                ps.setString(1, e_mail);
+                ps.setString(2, p_assword);
                 // Execute the SQL
                 rs = ps.executeQuery();
-
+/** private int userID;
+    private String email;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private int isAdmin;
+    private int active;*/
                 // check if user does exist inside database;......
-                if (rs != null) {
-                    result = rs.getInt("userID");
-                } else {
-                    return -1;
-                }
+                if (rs.next()) {
+                   int userId = rs.getInt("userID");
+                   String email = rs.getString("email");
+                   String password = rs.getString("password");
+                   String firstName = rs.getString("firstname");
+                   String lastName = rs.getString("lastName");
+                   int isAdmin = rs.getInt("isAdmin");
+                   int active = rs.getInt("active");
+                   u = new User(userId, email, password, firstName, lastName, isAdmin, active);
+                } 
 
             } catch (SQLException ex) {
                 System.out.println("An exception occurred while querying "
@@ -77,10 +87,8 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
                     System.out.println("An error occurred when shutting down the login() method: " + e.getMessage());
                 }
             }
-        } else{
-            return -1;
         }
-        return result;
+        return u;
     }
 
     @Override

@@ -43,7 +43,7 @@ public class CommandFactory {
                     
                     break;
                 case "login":
-                    
+                    command = new LoginCommand();
                     break;
 
                 case "register":

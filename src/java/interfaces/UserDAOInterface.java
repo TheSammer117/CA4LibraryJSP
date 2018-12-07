@@ -16,7 +16,7 @@ import java.util.List;
  * @author d00182295
  */
 public interface UserDAOInterface {
-    public int login(String email, String password);
+    public User login(String e_mail, String p_assword);
     public int register(String email, String password, String firstName, String lastName, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode);
     public boolean disableUser(int userID, User user);
     public User getUserByEmail(String email);
