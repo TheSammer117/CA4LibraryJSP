@@ -49,10 +49,6 @@ public class FrontController extends HttpServlet {
         
         // Send back the name of the page for the user to view
         response.sendRedirect(forwardToJsp);
-        
-        //Run the command that was created
-        forwardToJsp = command.execute
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
