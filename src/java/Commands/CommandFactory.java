@@ -37,7 +37,7 @@ public class CommandFactory {
                     command = new SearchTitleCommand();
                     break;
                 case"borrowBook":
-                    
+                    command = new BorrowBookCommand();
                     break;
                 case "returnBook":
                     
