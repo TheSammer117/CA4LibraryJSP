@@ -22,19 +22,13 @@
             if(sessionExpired != null){
                 out.println("<b>" + sessionExpired + "</b>");
                 session.removeAttribute("sessionExpired");
-                
-                
-                .............................................
-                SEE HERE IT DOES NOT SHOW ERROR MESSAGE.....
-                OR 
-                        session.
-                ...............................
+    
             }
             %>
             <form action="FrontController" method="POST">
                 <input type="hidden" name="action" value="login">
-                <label>Username : </label>
-                <input type="text" name="username" placeholder="Enter username" required>
+                <label>Email : </label>
+                <input type="text" name="email" placeholder="Enter email" required>
                 <label>Password : </label>
                 <input type='password' name='password' required>
                 <input type='submit' value='login'>
