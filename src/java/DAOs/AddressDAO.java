@@ -25,7 +25,7 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
         Connection conn = null;
         PreparedStatement ps = null;
         int rs = 0;
-        Boolean result = null;
+        Boolean result = false;
 
         try {
             conn = getConnection();
@@ -33,10 +33,11 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
             ps = conn.prepareStatement(query);
             int UserID = userID;
             
-//primaryCounty, String primaryEircode, 
-//String optAddressLine1, String optAddressLine2, 
-//String optTown, String optCounty, String optEircode
             ps.setInt(1, UserID);
+            // THIS IS INCASE NONE OF THE PRIMARY ARE NOT FILLED... 
+            if(primaryAddressLine1 == null || primaryAddressLine2 == null || PrimaryTown == null || primaryCounty == null || primaryEircode == null ){
+                result = false;
+            }else{
             ps.setString(2, primaryAddressLine1);
             ps.setString(3, primaryAddressLine2);
             ps.setString(4, PrimaryTown);
@@ -47,6 +48,8 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
             ps.setString(9, optTown);
             ps.setString(10, optCounty);
             ps.setString(11, optEircode);
+            }
+           
 
             rs = ps.executeUpdate();
         } catch (SQLException se) {
