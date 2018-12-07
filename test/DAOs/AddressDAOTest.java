@@ -60,7 +60,7 @@ public class AddressDAOTest {
         String optTown = "Dundalk";
         String optCounty = "Ireland";
         String optEircode = "2222";
-        AddressDAO instance = new AddressDAO();
+        AddressDAO instance = new AddressDAO("librarydb");
         boolean expResult = true;
         boolean result = instance.addAddress(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
@@ -78,7 +78,7 @@ public class AddressDAOTest {
         String optTown = "Dundalk";
         String optCounty = "Ireland";
         String optEircode = "2222";
-        AddressDAO instance = new AddressDAO();
+        AddressDAO instance = new AddressDAO("librarydb");
         boolean expResult = false;
         boolean result = instance.addAddress(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
@@ -96,7 +96,7 @@ public class AddressDAOTest {
         String optTown = null;
         String optCounty = null;
         String optEircode = null;
-        AddressDAO instance = new AddressDAO();
+        AddressDAO instance = new AddressDAO("librarydb");
         boolean expResult = true;
         boolean result = instance.addAddress(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
@@ -113,7 +113,7 @@ public class AddressDAOTest {
     public void testGetAddressesByID() {
         System.out.println("TEST 1 FOR GET ADDRESS BY ID. AIM TO PASS (PASS WHEN ID DOES EXIST)");
         int userID = 0;
-        AddressDAO instance = new AddressDAO();
+        AddressDAO instance = new AddressDAO("librarydb");
         // EXPRESULT WILL GET INFORMATION OF EXISTING USER.
         ArrayList<Address> expResult = null;
         ArrayList<Address> result = instance.getAddressesByID(userID);
@@ -122,7 +122,7 @@ public class AddressDAOTest {
     public void test2GetAddressesByID() {
         System.out.println("TEST 2 FOR GET ADDRESS BY ID. AIM TO FAIL (FAIL WHEN ID DOES NOT EXIST)");
         int userID = 9999;
-        AddressDAO instance = new AddressDAO();
+        AddressDAO instance = new AddressDAO("librarydb");
         //EXPRESUTLS SHOULD GET BACK ERRORS.
         ArrayList<Address> expResult = null;
         ArrayList<Address> result = instance.getAddressesByID(userID);
@@ -149,7 +149,7 @@ public class AddressDAOTest {
         String optTown = "newTown2";
         String optCounty = "newCountry2";
         String optEircode = "12323";
-        AddressDAO instance = new AddressDAO();
+        AddressDAO instance = new AddressDAO("librarydb");
         boolean expResult = true;
         boolean result = instance.updateAddressById(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);

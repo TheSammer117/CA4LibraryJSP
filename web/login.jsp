@@ -22,6 +22,7 @@
             if(sessionExpired != null){
                 out.println("<b>" + sessionExpired + "</b>");
                 session.removeAttribute("sessionExpired");
+                
             }
             %>
             <form action="FrontController" method="POST">
