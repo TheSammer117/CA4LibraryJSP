@@ -7,7 +7,6 @@ package Commands;
 
 /**
  * Team: Hernel Provido, Sami Mahmoud, Haiyun Yu
- *
  * @author Haiyun Yu d00188956 
  * 1. View books 
  * 2. Search for a book (or books) 
@@ -31,11 +30,11 @@ public class CommandFactory {
 
         if (action != null) {
             switch (action) {
-                case "viewBooks":
+                case "viewAllBooks":
                     command = new ViewAllTitlesCommand();
                     break;
                 case "searchBook":
-                    
+                    command = new SearchTitleCommand();
                     break;
                 case"borrowBook":
                     
