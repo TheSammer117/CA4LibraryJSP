@@ -6,8 +6,7 @@
 package DTOs;
 
 /**
- *
- * @author d00188956
+ * * @author Hernel Provido d00182295
  */
 public class Genre {
     private int genreID;
