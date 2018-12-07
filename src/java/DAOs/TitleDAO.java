@@ -241,21 +241,23 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
      * table.
      */
     @Override
-    public Title searchTitleByName(String novelName) {
+    public List<Title> searchTitleByName(String novelName) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Title title = null;
+        List<Title> tList = null;
 
         con = getConnection();
 
-        String query = "SELECT * FROM Title WHERE novelName Like '%?%' ";
+        String query = "SELECT * FROM Title WHERE novelName Like ? ";
         try {
             ps = con.prepareStatement(query);
-            ps.setString(1, novelName);
+            ps.setString(1, "%"+novelName+"%");
             rs = ps.executeQuery();
             if (rs.next()) {
                 title = new Title(rs.getInt("titleID"), rs.getString("novelName"), rs.getString("author"), rs.getInt("stock"), rs.getInt("onLoan"), rs.getString("titleDescription"));
+                tList.add(title);
             }
         } catch (SQLException e) {
             System.out.println("Exception occured in the searchTitleByName() method: " + e.getMessage());
@@ -274,8 +276,7 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
                 System.out.println("Exception occured in the finally section of the searchTitleByName() method: " + e.getMessage());
             }
         }
-
-        return title;
+        return tList;
     }
 
     /**
