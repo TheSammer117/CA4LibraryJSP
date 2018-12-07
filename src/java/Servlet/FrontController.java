@@ -51,7 +51,7 @@ public class FrontController extends HttpServlet {
         response.sendRedirect(forwardToJsp);
         
         //Run the command that was created
-        
+        forwardToJsp = command.execute
         
     }
 

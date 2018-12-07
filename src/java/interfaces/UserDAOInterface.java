@@ -21,5 +21,5 @@ public interface UserDAOInterface {
     public boolean disableUser(int userID, User user);
     public User getUserByEmail(String email);
     public List<User> showAllUser();
-
+    public int updateUserProfile(String email, String password, String firstName, String lastName, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode);
 }
