@@ -22,6 +22,13 @@
             if(sessionExpired != null){
                 out.println("<b>" + sessionExpired + "</b>");
                 session.removeAttribute("sessionExpired");
+                
+                
+                .............................................
+                SEE HERE IT DOES NOT SHOW ERROR MESSAGE.....
+                OR 
+                        session.
+                ...............................
             }
             %>
             <form action="FrontController" method="POST">
