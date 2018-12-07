@@ -5,19 +5,26 @@
  */
 package Commands;
 
-import com.sun.xml.registry.common.tools.bindings_v3.Command;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author omy
  */
-public class NoValidActionCommand extends Command {
+public class NoValidActionCommand implements Command {
 
-    public NoValidActionCommand() {
+    @Override
+    public String exceute(HttpServletRequest request, HttpServletResponse response) {
+        String forwardToJsp = "error.jsp";
+       HttpSession session = request.getSession();
+       
+       //return a message
+       session.setAttribute("errorMessage", "No valid information was supplied.");
+       
+       return forwardToJsp;
     }
 
-    NoValidActionCommand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }
