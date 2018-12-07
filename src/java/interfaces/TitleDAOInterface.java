@@ -28,7 +28,7 @@ public interface TitleDAOInterface {
     public boolean removeTitleByID(int titleID);
 
     //search a title by the title's name;
-    public Title searchTitleByName(String name);
+    public List<Title> searchTitleByName(String name);
     //decrease/increase the stock of titles
     //   private boolean changeStock(int titleID, int stock, String options);
     public boolean increaseStock(int titleID, int stock);
