@@ -5,19 +5,26 @@
  */
 package Commands;
 
-import com.sun.xml.registry.common.tools.bindings_v3.Command;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author omy
+ * Team: Hernel Provido, Sami Mahmoud, Haiyun Yu
+ * @author Haiyun Yu d00188956
  */
-public class NoActionSuppliedCommand extends Command {
 
-    public NoActionSuppliedCommand() {
-    }
+public class NoActionSuppliedCommand implements Command{
 
-    NoActionSuppliedCommand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public String exceute(HttpServletRequest request, HttpServletResponse response) {
+       String forwardToJsp = "error.jsp";
+       HttpSession session = request.getSession();
+       
+       //return a message
+       session.setAttribute("errorMessage", "No action action was supplied");
+       
+       return forwardToJsp;
     }
     
 }

@@ -5,10 +5,11 @@
  */
 package Servlet;
 
+import Commands.Command;
 import Commands.CommandFactory;
-import com.sun.xml.registry.common.tools.bindings_v3.Command;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.Compiler.command;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +43,15 @@ public class FrontController extends HttpServlet {
         //Create a command object to hold what we action we wish to take
         Command command = CommandFactory.createCommand(action);
         
+        // Run the command that was created. Remember, the command created 
+        // will depend on the value stored in the action field
+        forwardToJsp = command.exceute(request, response);
+        
+        // Send back the name of the page for the user to view
+        response.sendRedirect(forwardToJsp);
+        
         //Run the command that was created
-        forwardToJsp = command.execute
+        
         
     }
 
