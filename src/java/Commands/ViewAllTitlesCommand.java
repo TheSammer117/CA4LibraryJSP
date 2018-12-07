@@ -10,6 +10,7 @@ import DTOs.Title;
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,10 +27,20 @@ public class ViewAllTitlesCommand  implements Command{
        TitleDAO tDAO = new TitleDAO("librarydb");
        //get all titles from the database and store all titles into one arraylist
        ArrayList<Title> tList = tDAO.getAllTitles();
-       //add the retrieved list to the session so that the JSP can access it and display all inforamtion;
        
        
-        return null;
+       //add the retrieved list to the session so that the JSP can access it 
+       //and display all inforamtion;
+       //Get the session so that we can add new variable into it for storage.
+       HttpSession session = request.getSession();
+       
+       //store the list in the session
+       session.setAttribute("titleList", tList);
+       //set the page to be viewed to the results page
+       forwardToJsp = "";
+       
+       
+        return forwardToJsp;
        
     }
     
