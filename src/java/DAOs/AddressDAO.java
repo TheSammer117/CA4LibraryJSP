@@ -57,10 +57,10 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
 
             rs = ps.executeUpdate();
         } catch (SQLException se) {
-            System.out.println("SQL Exception occurred: " + se.getMessage());
+            System.out.println("ERROR ON addAddress() method, line 1 " + se.getMessage());
             se.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Exception occurred: " + e.getMessage());
+            System.out.println("ERROR ON addAddress() method, line 2 " + e.getMessage());
             e.printStackTrace();
         } finally {
             try {
@@ -71,7 +71,7 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
                     freeConnection(conn);
                 }
             } catch (SQLException e) {
-                System.out.println("Exception occured in finally section in addAddress() method. " + e.getMessage());
+                System.out.println("ERROR ON addAddress() method, line 3 " + e.getMessage());
             }
         }
 
@@ -119,7 +119,7 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
                 addresses.add(address);
             }
         } catch (SQLException ex){
-            System.out.println("Exception occured in the getAddressesByID() method " + ex.getMessage());
+            System.out.println("ERROR ON getAddressesByID() method, line 1  " + ex.getMessage());
             ex.printStackTrace();
         } finally{
             try{
@@ -133,7 +133,7 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
                     freeConnection(conn);
                 }
             } catch (SQLException e){
-                System.out.println("Exception occured in the finally secion of the getAddressesByID() method " + e.getMessage());
+                System.out.println("ERROR ON getAddressesByID() method, line 2" + e.getMessage());
                 e.printStackTrace();
             }
         }
@@ -167,10 +167,10 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
 
             rs = ps.executeUpdate();
         } catch (SQLException se) {
-            System.out.println("SQL Exception occurred: " + se.getMessage());
+            System.out.println("ERROR ON updateAddressById() method, line 1 " + se.getMessage());
             se.printStackTrace();
         } catch (Exception e) {
-            System.out.println("Exception occurred: " + e.getMessage());
+            System.out.println("ERROR ON updateAddressById() method, line 2 " + e.getMessage());
             e.printStackTrace();
         } finally {
             try {
@@ -181,7 +181,7 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
                     freeConnection(conn);
                 }
             } catch (SQLException e) {
-                System.out.println("Exception occured in finally section in addAddress() method. " + e.getMessage());
+                System.out.println("ERROR ON updateAddressById() method, line 3 " + e.getMessage());
             }
         }
 
