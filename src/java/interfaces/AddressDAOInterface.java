@@ -15,4 +15,5 @@ import java.util.ArrayList;
 public interface AddressDAOInterface {
     public boolean addAddress (int userID, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode);
     public ArrayList<Address> getAddressesByID(int userID);
+    public boolean updateAddressById(int userID, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode);
 }

@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
         Command command = CommandFactory.createCommand(action);
         
         //Run the command that was created
-        forwardToJsp = command.execute
+        forwardToJsp = command.execute;
         
     }
 
