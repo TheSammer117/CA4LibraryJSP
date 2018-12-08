@@ -55,7 +55,7 @@ public class CommandFactory {
                     command = new EditUserDetailsCommand();
                     break;
                 case "viewCurrentLoan":
-                    
+                    command = new ViewCurrentLoanCommand();
                     break;
                 case "viewPriviousLoan":
                     
