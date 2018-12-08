@@ -49,7 +49,7 @@ public class CommandFactory {
                     command = new RegisterCommand();
                     break;
                 case "viewProfile":
-                    
+                    command = new ViewUserProfileCommand();
                     break;
                 case "editDetails":
                     
