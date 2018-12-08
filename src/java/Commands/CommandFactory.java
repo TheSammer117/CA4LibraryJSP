@@ -52,7 +52,7 @@ public class CommandFactory {
                     command = new ViewUserProfileCommand();
                     break;
                 case "editDetails":
-                    
+                    command = new EditUserDetailsCommand();
                     break;
                 case "viewCurrentLoan":
                     
