@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import DTOs.Genre;
 import DTOs.Title;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public interface TitleDAOInterface {
     public ArrayList<Title> getAllTitles();
 
     //adding a new book in the library;
-    public boolean addTitle(Title title);
+    public boolean addTitle(Title title, Genre g);
 
     //update the details of a exited title in the library;
     public boolean updateTitleDetail(int titleID, Title title);
