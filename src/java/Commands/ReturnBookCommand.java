@@ -8,6 +8,9 @@ package Commands;
 import DAOs.LoanDAO;
 import DAOs.TitleDAO;
 import DTOs.Loan;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -35,6 +38,11 @@ public class ReturnBookCommand implements Command {
             //update the status of that loan
             loan.setStatus(0);
             int status = loan.getStatus();
+            
+            //record the current timestamp as the loan started date
+            long time = System.currentTimeMillis();
+            java.sql.Date currentDate = new java.sql.Date(time);
+            loan.setDayEnded(currentDate);            
 
             //get the session so that we can add the update result to it
             HttpSession session = request.getSession();
