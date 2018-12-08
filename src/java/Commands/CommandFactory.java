@@ -45,9 +45,8 @@ public class CommandFactory {
                 case "login":
                     command = new LoginCommand();
                     break;
-
                 case "register":
-                    
+                    command = new RegisterCommand();
                     break;
                 case "viewProfile":
                     
