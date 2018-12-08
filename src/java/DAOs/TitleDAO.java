@@ -7,7 +7,6 @@ package DAOs;
 
 import interfaces.TitleDAOInterface;
 import DTOs.Title;
-//import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -281,17 +280,10 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
 
     /**
      * increase/decrease the stock by a chosen option. The method should return
-     * true if the result
-     *
-     * @param titleID The ID of title to find the specified row from database
-     * @param stock The current stock of a title via specified id.
-     * @param options the string variables to record whether user
-     * increase/decrease the stock of a title.
+     * true if the result increase/decrease the stock of a title.
+     * @param id the id of a title 
      * @return return true/false if the result contains any values otherwise.
      */
-
-   
-
     @Override
     public Title searchByID(int id) {
         Connection conn = null;
@@ -329,6 +321,16 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
         return t;
     }
 
+    /**
+     *
+     * Updates a exited Title in the database matching the specified titleID,
+     * The method should return true if it updates the values to the table.
+     *
+     * @param id The ID of title to find the specified row from database
+     * @param title
+     * @return return true/false if the title entire changed in the Titles
+     * table.
+     */
     @Override
     public boolean updateTitle(int id, Title title) {
         Connection conn = null;
@@ -356,25 +358,12 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
 
             // Execute the query
             rs = ps.executeUpdate();
-
-        } /**
-         * catch (MySQLIntegrityConstraintViolationException e) {
-         * System.out.println("Constraint Exception occurred: " +
-         * e.getMessage()); // Set the rowsAffected to -1, this can be used as a
-         * flag for the display section rs = -1;
-        }
-         */
+        } 
         catch (SQLException se) {
             System.out.println("SQL Exception occurred: " + se.getMessage());
-            se.printStackTrace();
         } catch (Exception e) {
             System.out.println("Exception occurred: " + e.getMessage());
-            e.printStackTrace();
-        } // Now that the program has completed its database access component, 
-        // close the open access points (resultset, preparedstatement, connection)
-        // Remember to close them in the OPPOSITE ORDER to how they were opened
-        // Opening order: Connection -> PreparedStatement -> ResultSet
-        // Closing order: ResultSet -> PreparedStatement -> Connection
+        } 
         finally {
             try {
                 if (ps != null) {
@@ -387,7 +376,6 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
                 System.out.println("Exception occured in the finally section in the updateTitle() method");
             }
         }
-
         if (rs > 0) {
             result = true;
         } else {
@@ -397,6 +385,13 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
         return result;
     }
 
+    /**
+     *check the stock of any title by its id to return true or false;
+     * 
+     * @param titleID The ID of title to find the specified row from database
+     * 
+     * @return return true/false whether the title is available
+     */
     @Override
     public boolean checkAvailability(int titleID) {
         boolean result = false;
@@ -407,6 +402,15 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
         }
         return result;
     }
+    
+    /**
+     *increase/decrease the stock by a given amount of titles
+     * The method should return true if the result 
+     *
+     * @param titleID the id of a title object
+     * @param stock The current stock of a title via specified id.
+     * @return return true/false if the result contains any values otherwise.
+     */
 
      @Override
     public boolean increaseStock(int titleID, int stock) {
