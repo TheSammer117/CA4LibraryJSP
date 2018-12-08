@@ -26,9 +26,7 @@ public class Title {
     private int stock;
     private int onLoan;
     private String titleDescription;
-    private int isDisable;
-
-   
+    private int isDisable;   
 
     public Title() {
     }
@@ -114,15 +112,13 @@ public class Title {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + this.titleID;
-        hash = 53 * hash + Objects.hashCode(this.novelName);
-        hash = 53 * hash + Objects.hashCode(this.author);
-        hash = 53 * hash + this.stock;
-        hash = 53 * hash + this.onLoan;
-        hash = 53 * hash + Objects.hashCode(this.titleDescription);
-        hash = 53 * hash + this.isDisable;
-        return hash;
+        return ((Integer)this.getTitleID()).hashCode() 
+                + this.getAuthor().hashCode()
+                + this.getNovelName().hashCode()
+                + this.getTitleDescription().hashCode()
+                + ((Integer) this.getStock()).hashCode()
+                + ((Integer) this.getOnLoan()).hashCode()
+                + ((Integer) this.getIsDisable()).hashCode();
     }
 
     @Override
@@ -137,10 +133,13 @@ public class Title {
             return false;
         }
         final Title other = (Title) obj;
-        if (this.titleID != other.titleID) {
-            return false;
-        }
-        return true;
+        return (this.getTitleID() == other.getTitleID())
+                && this.getNovelName().equals(other.getNovelName())
+                && this.getAuthor().equals(other.getAuthor())
+                && this.getTitleDescription().equals(other.getTitleDescription())
+                && (this.getStock() == other.getStock())
+                && (this.getOnLoan() == other.getOnLoan())
+                && (this.getIsDisable() == other.getIsDisable());
     }
 
    
