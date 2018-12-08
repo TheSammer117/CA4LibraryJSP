@@ -5,6 +5,7 @@
  */
 package DAOs;
 
+import DTOs.Genre;
 import interfaces.TitleDAOInterface;
 import DTOs.Title;
 import java.sql.Connection;
@@ -81,23 +82,22 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
         return titles;
     }
 
-    /**
-     * Returns a new {@code Title} object which just adding into the database.
-     * The method returns true if the result gets any feedback otherwise.
+/**
+     * Returns a new {@code Title} object which just adding into the 
+     * database. once a new title added to database, it should also add 
+     * another row to TitleGenre to record what genre of that book is;
      *
-     * @param titleID, the id of a new title
-     * @param novelName the name of a new title
-     * @param author the author of the book
-     * @param stock the amount of title stored in the library
-     * @param onLoan the loaning copies of a title
-     * @param titleDescription describe the information of a title
-     * @return the title with its all information
+     * @param title, title object from TitleDao class
+     * @param g, genre object 
+     * @return true/false if the title added its all information to database.
      */
+
     @Override
-    public boolean addTitle(Title title) {
+    public boolean addTitle(Title title, Genre g) {//fixed
         Connection con = null;
         PreparedStatement ps = null;
         boolean result = false;
+        TitleGenreDAO tgDao = new TitleGenreDAO("librarydb");
         int rs = 0;
         try {
             con = getConnection();
@@ -110,8 +110,10 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
             ps.setString(5, title.getTitleDescription());
             rs = ps.executeUpdate();
 
-            if (rs > 0) {
+            if (rs >0) {                
+                if(tgDao.addTitlegenre(g, title)){
                 result = true;
+                }
             }
         } catch (SQLException e) {
             System.out.println("Exception occured in the final section of the addTitle() method, " + e.getMessage());
@@ -136,11 +138,8 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
      * Updates a exited Title in the database matching the specified titleID,
      * The method should return true if it updates the values to the table.
      *
-     * @param titleID The ID of title to find the specified row from database
-     * @param novelName The name to which this title should be changed.
-     * @param author the author of the matching title should be changed.
-     * @param titleDescription the description of the matching title should be
-     * changed.
+     * @param titleID the id of a title
+     * @param title the title object
      * @return return true/false if the title entire changed in the Titles
      * table.
      */
@@ -279,11 +278,14 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
     }
 
     /**
-     * increase/decrease the stock by a chosen option. The method should return
-     * true if the result increase/decrease the stock of a title.
-     * @param id the id of a title 
-     * @return return true/false if the result contains any values otherwise.
+     * Get the specified title by matching the id of the title. 
+     * The method should return the entire title which contains
+     * the specified novel's name.
+     * 
+     * @param id title id
+     * @return a title object matching the specified id
      */
+    
     @Override
     public Title searchByID(int id) {
         Connection conn = null;
@@ -340,7 +342,7 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
 
         try {
             conn = getConnection();
-            String query = "UPDATE title SET novelName=?, author=?, stock=?, onLoan=?, titleDescription=? WHERE titleID=?";
+            String query = "UPDATE title SET novelName= ?, author= ?, stock= ?, onLoan= ?, titleDescription= ? WHERE titleID= ?";
             ps = conn.prepareStatement(query);
             String novelName = title.getNovelName();
             String author = title.getAuthor();
@@ -386,10 +388,9 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
     }
 
     /**
-     *check the stock of any title by its id to return true or false;
+     *check the stock of any title by its id;
      * 
-     * @param titleID The ID of title to find the specified row from database
-     * 
+     * @param titleID The ID of title to find the specified row from database 
      * @return return true/false whether the title is available
      */
     @Override
