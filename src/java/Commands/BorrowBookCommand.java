@@ -11,6 +11,9 @@ import DAOs.UserDAO;
 import DTOs.Loan;
 import DTOs.Title;
 import DTOs.User;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,6 +47,13 @@ public class BorrowBookCommand implements Command {
             //call LoanDAO to create a new Loan object
             LoanDAO lDAO = new LoanDAO("librarydb");
             Loan loan = new Loan(u, t, status);
+            
+            //record the current timestamp as the loan started date
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+            loan.setDayStarted(currentDate);
+            
+            //get the result by adding a new loan
             int result = lDAO.addLoan(loan);
             
             if(result >0){
