@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author omy
+ * Team: Hernel Provido, Sami Mahmoud, Haiyun Yu
+ * @author Haiyun Yu d00188956 
  */
 public class BorrowBookCommand implements Command {
 
