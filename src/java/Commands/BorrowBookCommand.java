@@ -11,10 +11,10 @@ import DAOs.UserDAO;
 import DTOs.Loan;
 import DTOs.Title;
 import DTOs.User;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 /**
  * Team: Hernel Provido, Sami Mahmoud, Haiyun Yu
@@ -26,64 +26,46 @@ public class BorrowBookCommand implements Command {
     public String exceute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
         
-        //get the title details by title's name
-        String novelName = request.getParameter("novelName");       
-
-        //check if the novelName is not blank
-        if ((novelName != null) && (!novelName.equals(""))) {
-            //call the title dao method to search 
+        //get the parameters while user required to borrow a title;
+        int titleID = Integer.parseInt(request.getParameter("titleID"));
+        int userID = Integer.parseInt(request.getParameter("userID"));
+        
+        //if titleid and userid is not blank
+        if(titleID >0 && userID >0){
+            //call TitleDAO method to search title object by specified id;
             TitleDAO tDAO = new TitleDAO("librarydb");
-            List<Title> tList = tDAO.searchTitleByName(novelName);
-
-            //check if the list of title stored any title object
-            if (tList != null) {
-                for (int i = 0; i <= tList.size(); i++) {
-                    Title t = tList.get(i);
-                    int titleID = t.getTitleID();
-
-                    //check if any title object from the list is available to loan
-                    if (tDAO.checkAvailability(titleID) == true) {
-                        //get the session so we can get the user ID
-                        HttpSession session = request.getSession();
-                        UserDAO uDAO = new UserDAO("librarydb");
-                        User user = (User) session.getAttribute("userInfo");
-                        int userID = user.getUserID();
-                        
-                        //not sure how to set the status value
-                        int status = 0;
-                        LoanDAO lDAO = new LoanDAO("librarydb");
-                        //create a newe Loan object to hold all infomation 
-                        Loan loan = new Loan();
-                        loan.setUser(user);
-                        loan.setTitle(t);
-                        loan.setStatus(status);
-                        int result = lDAO.addLoan(loan);
-                        //change the stock of the record title
-                        tDAO.decreaseStock(titleID, 1);
-                        //if the loan is created successfully
-                        if(result >0){
-                            forwardToJsp = "";
-                        }else{
-                            forwardToJsp = "error.jsp";
-                            session.setAttribute("errorMessage", "Sorry Please try again.");
-                        }
-                    } else {
-                        forwardToJsp = "error.jsp";
-                        HttpSession session = request.getSession();
-                        session.setAttribute("errorMessage", "Sorry this book is currently not available.");
-                    }
-                }
-            } else {
-                forwardToJsp = "error.jsp";
-                HttpSession session = request.getSession();
-                session.setAttribute("errorMessage", "Sorry .book not found.");
-            }
-        } else {
-            forwardToJsp = "error.jsp";
+            Title t = tDAO.searchByID(titleID);
+            //call UserDAO method to search user by specified id;
+            UserDAO uDAO = new UserDAO("librarydb");
+            User u = uDAO.findUserByID(userID);
+            
+            //set up status for this loan
+            int status = 0;
+            //call LoanDAO to create a new Loan object
+            LoanDAO lDAO = new LoanDAO("librarydb");
+            Loan loan = new Loan(u, t, status);
+            int result = lDAO.addLoan(loan);
+            
+            if(result >0){
+            //get the session so that we can add info into it
             HttpSession session = request.getSession();
-            session.setAttribute("errorMessage", "A parameter value required for searching was missing.");
+            session.setAttribute("bookBorrowed", loan); 
+            //set the jsp page to display result;
+            forwardToJsp = "";
+            }else{
+            // Set the page to be viewed the error
+            forwardToJsp = "";
+            }
+        }else {
+            // Set the page to be viewed to the error page
+            forwardToJsp = "error.jsp";
+            // Get the session so we can add information to it
+            HttpSession session = request.getSession();
+
+            // Add an error message to the session to be displayed on the error page
+            // This lets us inform the user about what went wrong
+            session.setAttribute("errorMessage", "A parameter value required for updating was missing");
         }
         return forwardToJsp;
     }
-
-}
+    }
