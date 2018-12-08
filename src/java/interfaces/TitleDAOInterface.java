@@ -22,24 +22,25 @@ public interface TitleDAOInterface {
     //adding a new book in the library;
     public boolean addTitle(Title title, Genre g);
 
-    //update the details of a exited title in the library;
-    public boolean updateTitleDetail(int titleID, Title title);
-
     //removing a title by its id;
     public boolean removeTitleByID(int titleID);
 
     //search a title by the title's name;
     public List<Title> searchTitleByName(String name);
-    //decrease/increase the stock of titles
-    //   private boolean changeStock(int titleID, int stock, String options);
+    
+    //increase the stock of titles
     public boolean increaseStock(int titleID, int stock);
-
+    
+    //decrease the stock of titles
     public boolean decreaseStock(int titleID, int stock);
 
+    //search title by id
     public Title searchByID(int id);
 
+    //update information of a specifed title 
     public boolean updateTitle(int id, Title title);
-
+    
+    //check the availablity of a title by its id
     public boolean checkAvailability(int titleID);
 
 }
