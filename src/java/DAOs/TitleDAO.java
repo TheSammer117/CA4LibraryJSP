@@ -132,58 +132,6 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
 
         return result;
     }
-
-    /**
-     *
-     * Updates a exited Title in the database matching the specified titleID,
-     * The method should return true if it updates the values to the table.
-     *
-     * @param titleID the id of a title
-     * @param title the title object
-     * @return return true/false if the title entire changed in the Titles
-     * table.
-     */
-    @Override
-    public boolean updateTitleDetail(int titleID, Title title) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        boolean result = false;
-        int rowsAffected = 0;
-
-        con = getConnection();
-        String query = "UPDATE Title SET novelName = ?, author = ?,  titleDescription = ? WHERE titleID = ? ";
-
-        try {
-            ps = con.prepareStatement(query);
-            ps.setString(1, title.getNovelName());
-            ps.setString(2, title.getAuthor());
-            ps.setString(3, title.getTitleDescription());
-            ps.setInt(4, title.getStock());
-            rowsAffected = ps.executeUpdate();
-
-            if (rowsAffected == 1) {
-                result = true;
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Exception occured in the updateTitleDetail() method: " + e.getMessage());
-        } finally {
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (con != null) {
-                    freeConnection(con);
-                }
-            } catch (SQLException e) {
-                System.out.println("Exception occured in the final section of the updateTitleDetail() method");
-                e.getMessage();
-            }
-        }
-
-        return result;
-    }
-
     /**
      *
      * Remove a exited Title in the database matching the specified titleID, The
