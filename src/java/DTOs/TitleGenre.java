@@ -32,6 +32,11 @@ public class TitleGenre {
     }
 
     @Override
+    public String toString() {
+        return "TitleGenre{" + "genreID=" + genreID + ", titleID=" + titleID + '}';
+    }
+
+    @Override
     public int hashCode() {
         return ((Integer) this.getGenreID()).hashCode() 
                 +((Integer) this.getTitleID()).hashCode();
