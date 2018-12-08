@@ -40,7 +40,7 @@ public class CommandFactory {
                     command = new BorrowBookCommand();
                     break;
                 case "returnBook":
-                    
+                    command = new ReturnBookCommand();
                     break;
                 case "login":
                     command = new LoginCommand();
