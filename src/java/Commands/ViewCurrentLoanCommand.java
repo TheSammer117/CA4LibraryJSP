@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 public class ViewCurrentLoanCommand implements Command {
 
     @Override
-    public String exceute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
         //get user id
         int userID = Integer.parseInt(request.getParameter("userID"));

@@ -45,7 +45,7 @@ public class FrontController extends HttpServlet {
         
         // Run the command that was created. Remember, the command created 
         // will depend on the value stored in the action field
-        forwardToJsp = command.exceute(request, response);
+        forwardToJsp = command.execute(request, response);
         
         // Send back the name of the page for the user to view
         response.sendRedirect(forwardToJsp);

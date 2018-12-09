@@ -9,61 +9,56 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+    
     // Retrieve the appropriate Locale - check if it's already been set within the site
     Locale clientLocale = (Locale) session.getAttribute("currentLocale");
 
-    //If not locale set i.e. first time here or session has ended/timed out
-    if (clientLocale == null) {
-        //get locale for client's browser
+    // If there was no locale already set -- it's their first time here or their session timed out
+    if(clientLocale == null){
+        // Get the locale for the client's browser (that is what's stored in the request)
         clientLocale = request.getLocale();
-        //save it a the selected locale
+        // Save it as the currently selected locale
         session.setAttribute("currentLocale", clientLocale);
     }
 %>
-<!-- form for changing language-->
+<!-- create a form to change the language based on changing the drop down selection -->
 <form action="FrontController" method="post">
-    <input type="hidden" name="action" value="changeLanguage"/>
-    <!--submit value whenever value of drop down changes-->
-    <select name="language" onchange="this.form.submit()">
+    <!-- When the value of the drop down changes, 
+    submit the form and send the value to the controller -->
+    <select name ="language" onchange="this.form.submit()">
         <%
             String language = (String) session.getAttribute("language");
-            if (language == null || language.equals("en")) {
+            if(language == null || language.equals("en")){
+                
         %>
-        <option value="en" selected>English</option>
-        <option value="fr">Français</option>
+            <option value="en" selected>English</option>
+            <option value="fr">Français</option>
         <%
-        } else {
+            }else{
         %>
-        <option value="en">English</option>
-        <option value="fr" selected>Français</option>
-        <%
+            <option value="en">English</option>
+            <option value="fr" selected>Français</option>
+        <%        
             }
         %>
     </select>
+    <input type="hidden" name="action" value="changeLanguage"/>
 </form>
-<!-- Create the resource bundle and include it on all pages -->
+<!-- Create the resource bundle we're going to be using in all pages.
+    Putting it in here means we don't need to repeat it in every page
+--> 
 <%
+    // Retrieve the resource bundle from the session
     ResourceBundle dataBundle = (ResourceBundle) session.getAttribute("dataBundle");
-    //if no bundle stored
-    if (dataBundle == null) {
-        //make on with the client current locale
+    // If there is no bundle stored (i.e. if this is the first time you're coming to the site)
+    if(dataBundle == null){
+        // Create a resource bundle based on the client's current locale settings
         dataBundle = ResourceBundle.getBundle("properties.LibrarySystem", clientLocale);
 
-//store this resouce bundle for future use
+        // Store this resource bundle for future use
         session.setAttribute("dataBundle", dataBundle);
     }
+
 %>
 <div>
-    <%
-        //get user from session
-        User user = (User) session.getAttribute("loggedInUser");
-        //if user is logged in, display logout
-        if (user != null) {
-    %>
-    <a href="FrontController?action=logout"><%=dataBundle.getString("logout")%></a>
-    <%} //Otherwise, display login form
-    else {
-    %>
-    <%@include file="/includes/login.jsp" %>
-    <% }%>
 </div>

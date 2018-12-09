@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 public class ViewUserProfileCommand implements Command {
 
     @Override
-    public String exceute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
 
         //get the information

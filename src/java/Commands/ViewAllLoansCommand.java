@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 public class ViewAllLoansCommand implements Command {
 
     @Override
-    public String exceute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
         //get userID from request
         int userID = Integer.parseInt(request.getParameter("userID"));

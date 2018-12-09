@@ -4,8 +4,7 @@
     Author     : samiwise
 --%>
 
-<%@page import="java.util.Locale"%>
-<%@page import="java.util.ResourceBundle"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,7 +24,7 @@
     
             }
             %>
-            <form action="FrontController" method="POST">
+            <form action="FrontController" method="post">
                 <input type="hidden" name="action" value="login">
                 <label>Email : </label>
                 <input type="text" name="email" placeholder="Enter email" required>

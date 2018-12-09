@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 public class ReturnBookCommand implements Command {
 
     @Override
-    public String exceute(HttpServletRequest request, HttpServletResponse response) {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         String forwardToJsp = "";
         //get the parameters and convert it to integer
         int loanID = Integer.parseInt(request.getParameter("loanID"));
