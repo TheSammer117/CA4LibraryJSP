@@ -20,10 +20,31 @@ import interfaces.AddressDAOInterface;
  */
 public class AddressDAO extends DatabaseConnection implements AddressDAOInterface {
 
+    /**
+     * the addressDAO constructor deals with the connection to database
+     * @param databaseName the name of database
+     * 
+     */
     public AddressDAO(String databaseName) {
         super(databaseName);
     }
 
+    /**
+     *Return true/false when a new address updates to database
+     * 
+     * @param userID the id of a specific user
+     * @param primaryAddressLine1 the primary address line1
+     * @param primaryAddressLine2 the primary address line2
+     * @param PrimaryTown the primary address town
+     * @param primaryCounty the primary address country
+     * @param primaryEircode the primary address eircode
+     * @param optAddressLine1 the optional address line 1
+     * @param optAddressLine2 the optional address line 2
+     * @param optTown the optional address town
+     * @param optCounty the optional address country
+     * @param optEircode the optional address eircode 
+     * @return a boolean while the new address recorded to the database
+     */
     @Override
     public boolean addAddress(int userID, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode) {
         Connection conn = null;
@@ -83,7 +104,13 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
 
         return result;
     }
-    
+   
+    /**
+     *This method will return a list of addresses by 
+     * matching with the specific user id 
+     * @param userID the user id
+     * @return a list of addresses stored to the database
+     */
     @Override
     public ArrayList<Address> getAddressesByID(int userID){
         Connection conn = null;
@@ -140,6 +167,21 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
         return addresses;
     }
     
+    /**
+     *Return true/false while the fields of an address was updated to database.
+     * @param userID the id of a specific user
+     * @param primaryAddressLine1 the primary address line1
+     * @param primaryAddressLine2 the primary address line2
+     * @param PrimaryTown the primary address town
+     * @param primaryCounty the primary address country
+     * @param primaryEircode the primary address eircode
+     * @param optAddressLine1 the optional address line 1
+     * @param optAddressLine2 the optional address line 2
+     * @param optTown the optional address town
+     * @param optCounty the optional address country
+     * @param optEircode the optional address eircode 
+     * @return true/false if an exited address has been updated
+     */
     @Override
     public boolean updateAddressById(int userID, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode) {
           Connection conn = null;

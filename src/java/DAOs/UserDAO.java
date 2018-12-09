@@ -26,10 +26,21 @@ import java.util.logging.Logger;
  */
 public class UserDAO extends DatabaseConnection implements UserDAOInterface {
 
+    /**
+     *the constructor deals with the connection with the database 
+     * 
+     * @param databaseName the name of database
+     */
     public UserDAO(String databaseName) {
         super(databaseName);
     }
 
+    /**
+     *login a  user while the email and password is matching what recorded in database
+     * @param e_mail
+     * @param p_assword
+     * @return an user object from database
+     */
     @Override
     public User login(String e_mail, String p_assword) {
         // Required for DB interaction
@@ -91,7 +102,25 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         }
         return u;
     }
-
+    /**
+     * adding new user to database
+     * 
+     * @param email the user name
+     * @param password user password
+     * @param firstName first name
+     * @param lastName last name
+     * @param primaryAddressLine1 
+     * @param primaryAddressLine2
+     * @param primaryTown 
+     * @param primaryCounty
+     * @param primaryEircode
+     * @param optAddressLine1
+     * @param optAddressLine2
+     * @param optTown
+     * @param optCounty
+     * @param optEircode
+     * @return return a integer whether a new row recorded to database
+     */
     @Override
     public int register(String email, String password, String firstName, String lastName, String primaryAddressLine1, String primaryAddressLine2, String primaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode) {
         // Required for DB interaction
@@ -163,6 +192,12 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         return newId;
     }
 
+    /**
+     *disable a user if a user required to remove his/her user account
+     * @param userID user id
+     * @param user the user object
+     * @return true/false if the column "isDisable" is updated to database 
+     */
     @Override
     public boolean disableUser(int userID, User user) {
         // Required for DB interaction
@@ -203,6 +238,10 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         return check;
     }
 
+    /**
+     *display a list of all users currently stored in database
+     * @return a list of users
+     */
     @Override
     public List<User> showAllUser() {
         Connection conn = null;
@@ -242,6 +281,11 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         return user;
     }
 
+    /**
+     *Get an user account searching by the user name(email);
+     * @param email the user name 
+     * @return return a specific user object matching with the user name
+     */
     @Override
     public User getUserByEmail(String email) {
         Connection conn = null;
@@ -289,6 +333,11 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         return user;
     }
 
+    /**
+     *searching an user by an user id 
+     * @param userID user id 
+     * @return an user object if the user is found
+     */
     public User findUserByID(int userID) {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -326,6 +375,27 @@ public class UserDAO extends DatabaseConnection implements UserDAOInterface {
         return u;
     }
 
+    /**
+     *update a specific user details by each fields of user object, 
+     * it also can update the address to address table
+     * 
+     * @param email
+     * @param password
+     * @param firstName
+     * @param lastName
+     * @param primaryAddressLine1
+     * @param primaryAddressLine2
+     * @param PrimaryTown
+     * @param primaryCounty
+     * @param primaryEircode
+     * @param optAddressLine1
+     * @param optAddressLine2
+     * @param optTown
+     * @param optCounty
+     * @param optEircode
+     * @return an integer whether the user details updated to database, once the 
+     * user profile is updated, the matching address will be also updated.
+     */
     @Override
     public int updateUserProfile(String email, String password, String firstName, String lastName, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode) {
           // Required for DB interaction

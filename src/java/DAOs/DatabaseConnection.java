@@ -17,11 +17,19 @@ public class DatabaseConnection {
     
     private String databaseName;
     
+    /**
+     *constructor deals with the connection to database
+     * @param databaseName the name of database
+     */
     public DatabaseConnection (String databaseName)
     {
         this.databaseName = databaseName;
     }
 
+    /**
+     *The method connects with the jdbc driver to database
+     * @return connection to find driver class
+     */
     public Connection getConnection(){
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/librarydb";
@@ -40,6 +48,10 @@ public class DatabaseConnection {
         return con;
     }
     
+    /**
+     * closing the connection if parameter is blank
+     * @param con the connection with the database by jdbc driver
+     */
     public void freeConnection(Connection con){
         try {
             if (con != null) {

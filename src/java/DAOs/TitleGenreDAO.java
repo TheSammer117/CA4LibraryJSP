@@ -23,17 +23,16 @@ import interfaces.TitleGenreDAOInterface;
 
 public class TitleGenreDAO extends DatabaseConnection implements TitleGenreDAOInterface {
 
-    public TitleGenreDAO(String databaseName) {
-        super(databaseName);
-    }
-    
-     /**
-     * Initialise a TitlegenreDao to access the specified database name
+    /**
+     * Initialise a TitleGenreDao to access the specified database name
      *
      * @param databaseName The name of the MySQL database to be accessed (this
      * database should be running on localhost and listening on port 3306).
      */
-
+    public TitleGenreDAO(String databaseName) {
+        super(databaseName);
+    }
+    
     /**
      * Returns a new {@code TitleGenre} object adding into the database.
      * The method returns true if the result gets any feedback otherwise.
