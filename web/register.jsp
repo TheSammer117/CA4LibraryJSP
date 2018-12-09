@@ -8,10 +8,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+          <%@include file = "/includes/header.jsp"%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register</title>
+      <title><%=dataBundle.getString("register_title")%></title>
     </head>
     <body>
+        <h1><%=dataBundle.getString("register_h1")%></h1>    
         <form action='FrontController' method='post'>
             <input type='hidden' name='action' value='register'/>
             <label>Email : </label>
