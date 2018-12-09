@@ -70,7 +70,6 @@ public class BorrowBookCommand implements Command {
             HttpSession session = request.getSession();
 
             // Add an error message to the session to be displayed on the error page
-            // This lets us inform the user about what went wrong
             session.setAttribute("errorMessage", "A parameter value required for updating was missing");
         }
         return forwardToJsp;

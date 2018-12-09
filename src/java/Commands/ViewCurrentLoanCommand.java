@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author omy
+ * Team: Hernel Provido, Sami Mahmoud, Haiyun Yu
+ * @author Haiyun Yu d00188956 
  */
 public class ViewCurrentLoanCommand implements Command {
 
@@ -41,7 +41,6 @@ public class ViewCurrentLoanCommand implements Command {
             HttpSession session = request.getSession();
 
             // Add an error message to the session to be displayed on the error page
-            // This lets us inform the user about what went wrong
             session.setAttribute("errorMessage", "The userID is missing.");
         }
         

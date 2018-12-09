@@ -65,7 +65,6 @@ public class ReturnBookCommand implements Command {
             // Get the session so we can add information to it
             HttpSession session = request.getSession();
             // Add an error message to the session to be displayed on the error page
-            // This lets us inform the user about what went wrong
             session.setAttribute("errorMessage", "Text was supplied for the amount to be updated by.");
         }
 
