@@ -28,12 +28,12 @@ public class RegisterCommand implements Command {
         String primaryAddressLine1 = request.getParameter("primaryAddressLine1");
         String primaryAddressLine2 = request.getParameter("primaryAddressLine2");
         String primaryTown = request.getParameter("primaryTown");
-        String primaryCountry = request.getParameter("primaryCountry");
+        String primaryCountry = request.getParameter("primaryCounty");
         String primaryEircode = request.getParameter("primaryEircode");
         String optAddressLine1 = request.getParameter("optAddressLine1");
         String optAddressLine2 = request.getParameter("optAddressLine2");
         String optTown = request.getParameter("optTown");
-        String optCountry = request.getParameter("optCountry");
+        String optCountry = request.getParameter("optCounty");
         String optEircode = request.getParameter("optEircode");
         
         //check if above paramaters are not blank

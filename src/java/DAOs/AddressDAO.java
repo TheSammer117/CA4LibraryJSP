@@ -45,6 +45,25 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
      * @param optEircode the optional address eircode 
      * @return a boolean while the new address recorded to the database
      */
+    
+     /**
+     * This will allow a user to add his address(s) to the database when registering
+     *
+     * @param userID parameter is used to find the user in the db.
+     * @param primaryAddressLine1 is a compulsory part of the address
+     * @param primaryAddressLine2 is an optional part of the address
+     * @param PrimaryTown is a compulsory part of the address
+     * @param primaryCounty is a compulsory part of the address
+     * @param primaryEircode is a compulsory part of the address
+     * @param optAddressLine1 is an optional part of the address if they have a second address
+     * @param optAddressLine2 is an optional part of the address if they have a second address
+     * @param optTown is an optional part of the address if they have a second address
+     * @param optCounty is an optional part of the address if they have a second address
+     * @param optEircode is an optional part of the address if they have a second address
+     
+     * @return ArrayList with users from the db matching the first and last name
+     * parameters
+     */
     @Override
     public boolean addAddress(int userID, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode) {
         Connection conn = null;

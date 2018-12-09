@@ -40,10 +40,7 @@ public class CommandFactory {
                 case "register":
                     command = new RegisterCommand();
                     break;
-                //7. View my (the user’s) profile 
-                case "viewProfile":
-                    command = new ViewUserProfileCommand();
-                    break;
+          
                 //8. Edit my (the user’s) details
                 case "editDetails":
                     command = new EditUserDetailsCommand();
