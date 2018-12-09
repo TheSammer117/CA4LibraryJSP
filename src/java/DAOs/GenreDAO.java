@@ -26,6 +26,14 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
         super(databaseName);
     }
 
+    
+    /**
+     * Returns a new {@code Title} object which just adding into the 
+     * database. once a new genre added to database;
+     *
+     * @param g, genre object 
+     * @return true/false if the genre object added to database
+     */
     @Override
     public boolean addGenre(Genre g) {
         Connection con = null;
@@ -44,7 +52,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                 result = true;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR ON addGenre() method, " + e.getMessage());
+            System.out.println("ERROR ON addGenre() method, line 1 " + e.getMessage());
         } finally {
             try {
                 if (ps != null) {
@@ -54,13 +62,18 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                     freeConnection(con);
                 }
             } catch (SQLException ex) {
-                System.out.println("ERROR ON addGenre() method, " + ex.getMessage());
+                System.out.println("ERROR ON addGenre() method, line 2 " + ex.getMessage());
             }
         }
 
         return result;
     }
 
+    /**
+     * Returns a list of Genre objects from the database. 
+     *
+     * @return The list of all genres from database.
+     */
     @Override
     public List<Genre> getAllGenre() {
         Connection con = null;
@@ -80,7 +93,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                 gList.add(g);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR ON getAllGenre() method, " + ex.getMessage());
+            System.out.println("ERROR ON getAllGenre() method, line 1 " + ex.getMessage());
         } finally {
             try {
                 if (rs != null) {
@@ -93,12 +106,21 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                     freeConnection(con);
                 }
             } catch (SQLException ex) {
-                System.out.println("ERROR ON getAllGenre() method, " + ex.getMessage());
+                System.out.println("ERROR ON getAllGenre() method,line 2  " + ex.getMessage());
             }
         }
         return gList;
     }
 
+        /**
+     * Get the specified Genre by matching the id of a exited genre 
+     * from database;
+     * The method should return the Genre object by a id;
+     *
+     * @param genreID the id of a genre object
+     * @return return the information of a genre by specified id;
+     * table.
+     */
     @Override
     public Genre searchGenreByid(int genreID) {
         Connection conn = null;
@@ -117,7 +139,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                 g = new Genre(rs.getInt("genreID"), rs.getString("genre"));
             }
         } catch(SQLException e){
-            System.out.println("ERROR ON searchGenreByid() method, " + e.getMessage());
+            System.out.println("ERROR ON searchGenreByid() method, line 1" + e.getMessage());
         } finally{
             try{
                 if(rs != null){
@@ -130,7 +152,54 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                     freeConnection(conn);
                 }
             } catch(SQLException e){
-                System.out.println("ERROR ON searchGenreByid() method, " + e.getMessage());
+                System.out.println("ERROR ON searchGenreByid() method, line 2" + e.getMessage());
+            }
+        }
+        return g;
+    }
+
+    /**
+     * Get the specified Genre by matching the name of a exited genre 
+     * from database;
+     * The method should return the Genre object
+     * which contains the specified genre.
+     *
+     * @param genre the name of genre object
+     * @return return the information of a genre by specified genre;
+     * table.
+     */
+    @Override
+    public Genre searchGenreByGenre(String genre) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Genre g = null;
+
+        con = getConnection();
+
+        String query = "SELECT * FROM Genre WHERE genre = ? ";
+        try {
+            ps = con.prepareStatement(query);
+            ps.setString(1, genre);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                g = new Genre(rs.getInt("genreID"), rs.getString("genre"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the searchGenreByGenre() method: " + e.getMessage());
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (con != null) {
+                    freeConnection(con);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section of the searchGenreByGenre() method: " + e.getMessage());
             }
         }
         return g;

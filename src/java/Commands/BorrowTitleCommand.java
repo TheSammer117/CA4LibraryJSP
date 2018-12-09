@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * Team: Hernel Provido, Sami Mahmoud, Haiyun Yu
  * @author Haiyun Yu d00188956 
  */
-public class BorrowBookCommand implements Command {
+public class BorrowTitleCommand implements Command {
 
     @Override
     public String exceute(HttpServletRequest request, HttpServletResponse response) {

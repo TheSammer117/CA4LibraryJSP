@@ -19,5 +19,6 @@ public interface GenreDAOInterface {
     public List<Genre> getAllGenre();
     //get specific genre by id
     public Genre searchGenreByid(int genreID);
-    
+    //get specific genre by searching genre
+    public Genre searchGenreByGenre(String genre);
 }

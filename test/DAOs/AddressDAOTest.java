@@ -65,6 +65,7 @@ public class AddressDAOTest {
         boolean result = instance.addAddress(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
     }
+     @Test
         public void test2AddAddress() {
         System.out.println("TEST 1 TO ADD ADDRESS TO THE DATABASE. (AIM TO GET ERRORS (GET ERRORS WHEN PRIMARY ARE NOT FILLED))");
         int userID = 1;
@@ -83,6 +84,7 @@ public class AddressDAOTest {
         boolean result = instance.addAddress(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
     }
+         @Test
           public void test3AddAddress() {
         System.out.println("TEST 1 TO ADD ADDRESS TO THE DATABASE. AIM TO PASS WHEN OPTIONAL ARE NOT FILLED)");
         int userID = 2;
@@ -112,19 +114,22 @@ public class AddressDAOTest {
     @Test
     public void testGetAddressesByID() {
         System.out.println("TEST 1 FOR GET ADDRESS BY ID. AIM TO PASS (PASS WHEN ID DOES EXIST)");
-        int userID = 0;
+        int userID = 1;
         AddressDAO instance = new AddressDAO("librarydb");
         // EXPRESULT WILL GET INFORMATION OF EXISTING USER.
-        ArrayList<Address> expResult = null;
+        ArrayList<Address> a = new ArrayList();
+        Address expResult = a.get(userID);
         ArrayList<Address> result = instance.getAddressesByID(userID);
         assertEquals(expResult, result);
     }
+     @Test
     public void test2GetAddressesByID() {
         System.out.println("TEST 2 FOR GET ADDRESS BY ID. AIM TO FAIL (FAIL WHEN ID DOES NOT EXIST)");
         int userID = 9999;
         AddressDAO instance = new AddressDAO("librarydb");
         //EXPRESUTLS SHOULD GET BACK ERRORS.
-        ArrayList<Address> expResult = null;
+        ArrayList<Address> a = new ArrayList();
+        Address expResult = a.get(userID);
         ArrayList<Address> result = instance.getAddressesByID(userID);
         assertEquals(expResult, result);
     }
@@ -138,25 +143,45 @@ public class AddressDAOTest {
     @Test
     public void testUpdateAddressById() {
         System.out.println("TEST 1 FOR UPDATE ADDRESS BY ID. THIS IS TO CHECK IF THIS MOTHOD WORKS");
-        int userID = 0;
-        String primaryAddressLine1 = "newAddress";
-        String primaryAddressLine2 = "newAddress";
-        String PrimaryTown = "newTown";
-        String primaryCounty = "newCountry";
-        String primaryEircode = "12323";
-        String optAddressLine1 = "newAddress2";
-        String optAddressLine2 = "newAddress2";
-        String optTown = "newTown2";
-        String optCounty = "newCountry2";
-        String optEircode = "12323";
+        int userID = 4;
+        String primaryAddressLine1 = "123. eastwood";
+        String primaryAddressLine2 = null;
+        String PrimaryTown = "Carlingford";
+        String primaryCounty = "Co. Louth";
+        String primaryEircode = "c15dn20";
+        String optAddressLine1 = null;
+        String optAddressLine2 = null;
+        String optTown = null;
+        String optCounty = null;
+        String optEircode = null;
         AddressDAO instance = new AddressDAO("librarydb");
         boolean expResult = true;
         boolean result = instance.updateAddressById(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
+      }
+    @Test
+    public void test2UpdateAddressById() {
+        System.out.println("TEST 2 FOR UPDATE ADDRESS BY ID. CHECK IF IT FAILS IF ID DOES NOT EXIST");
+        int userID = 9999;
+        String primaryAddressLine1 = "123. eastwood";
+        String primaryAddressLine2 = null;
+        String PrimaryTown = "Carlingford";
+        String primaryCounty = "Co. Louth";
+        String primaryEircode = "c15dn20";
+        String optAddressLine1 = null;
+        String optAddressLine2 = null;
+        String optTown = null;
+        String optCounty = null;
+        String optEircode = null;
+        AddressDAO instance = new AddressDAO("librarydb");
+        boolean expResult = true;
+        boolean result = instance.updateAddressById(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
+        assertEquals(expResult, result);
+      }
+  
          //******************* END HERE ***********************************
     // Test of updateAddressById method, of class AddressDAO. ..............................
     //******************* END HERE ***********************************
     
-    }
     
-}
+    }
