@@ -64,6 +64,6 @@
     <%} //Otherwise, display login form
     else {
     %>
-    <%@include file="login,jsp" %>
+    <%@include file="/includes/login.jsp" %>
     <% }%>
 </div>
