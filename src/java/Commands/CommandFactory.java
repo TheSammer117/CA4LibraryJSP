@@ -78,6 +78,14 @@ public class CommandFactory {
                 case "addBook":
                     command = new AddTitleCommand();
                     break;
+                //17.dislike a title
+                case "dislikeTitle":
+                    command = new DislikeATitleCommand();
+                    break;
+                //18.like a title
+                case "likeTitle":
+                    command = new LikeATitleCommand();
+                    break;
                 default:
                     command = new NoValidActionCommand();
                     break;
