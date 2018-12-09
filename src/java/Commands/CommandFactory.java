@@ -57,8 +57,8 @@ public class CommandFactory {
                 case "viewCurrentLoan":
                     command = new ViewCurrentLoanCommand();
                     break;
-                case "viewPriviousLoan":
-                    
+                case "viewPreviousLoan":
+                    command = new ViewPreviousLoanCommand();
                     break;
                 case "payOverdueFee":
                     
