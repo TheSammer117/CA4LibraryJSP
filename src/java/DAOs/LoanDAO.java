@@ -21,6 +21,11 @@ import interfaces.LoanDAOInterface;
  */
 public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
 
+    /**
+     *the constructor deals with the connection with the database 
+     * 
+     * @param databaseName the name of database
+     */
     public LoanDAO(String databaseName) {
         super(databaseName);
     }
@@ -192,6 +197,12 @@ public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
         return false;
     }
     
+    /**
+     * This is used to get the single title currently on loan
+     *
+     * @param userID the id of loan
+     * @return a loan object by specific loan id
+     */
     @Override
     public Title getTitleByLoanID(int loanID){
         Connection conn = null;

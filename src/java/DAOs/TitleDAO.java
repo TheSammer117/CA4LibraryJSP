@@ -22,15 +22,15 @@ import java.util.List;
  */
 public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
 
-    public TitleDAO(String databaseName) {
-        super(databaseName);
-    }
     /**
      * Initialise a TitleDao to access the specified database name
      *
      * @param databaseName The name of the MySQL database to be accessed (this
      * database should be running on localhost and listening on port 3306).
      */
+    public TitleDAO(String databaseName) {
+        super(databaseName);
+    }    
     
     /**
      * Returns a list of Title objects based on information in the database. All
