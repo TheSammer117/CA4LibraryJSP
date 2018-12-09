@@ -17,5 +17,14 @@
     <body>
         <a href="login.jsp">Login!</a>
         <a href="FrontController?action=viewAllBooks">View Library catalog</a>
+                <%   
+                    User user = (User) session.getAttribute("loggedInUser");
+//if user is logged in, display link to account
+            if (user != null) {
+        %>
+        <a href="MyAccount.jsp">Account</a>
+        <%
+            }
+        %>
     </body>
 </html>

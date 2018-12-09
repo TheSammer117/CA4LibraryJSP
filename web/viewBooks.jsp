@@ -40,5 +40,6 @@
                 out.println("No Books found. Please try again.");
             }
         %>
+        <%@ include file = "/includes/footer.jsp" %>
     </body>
 </html>

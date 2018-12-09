@@ -32,5 +32,6 @@
                 <input type='password' name='password' required>
                 <input type='submit' value='login'>
             </form>
+            <%@ include file = "/includes/footer.jsp" %>
     </body>
 </html>

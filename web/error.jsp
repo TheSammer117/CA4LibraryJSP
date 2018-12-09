@@ -32,5 +32,6 @@
             // This makes sure that old error messages 
             // don't mistakenly get printed out later
 %>
+<%@ include file = "/includes/footer.jsp" %>
     </body>
 </html>
