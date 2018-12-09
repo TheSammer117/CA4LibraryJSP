@@ -64,13 +64,22 @@ public class CommandFactory {
                 case "changeLanguage":
                     command = new ChangeLanguageCommand();
                     break;
-                //Programmer-defined: (HaiyunYu)
                 //13. view a title's information
                 case "viewBookDetails":
                     command = new ViewTitleDetailCommand();
                     break;
+                //14.edit book's details
                 case "editBookDetails":
                     command = new EditTitleDetailCommand();
+                    break;
+                //15. view the user's all loans: 
+                case "viewAllLoans":
+                    command = new ViewAllLoansCommand();
+                    break;
+                //Programmer-defined: (HaiyunYu)
+                //16. add a book
+                case "addBook":
+                    command = new AddTitleCommand();
                     break;
                 default:
                     command = new NoValidActionCommand();
