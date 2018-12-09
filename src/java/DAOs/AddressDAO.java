@@ -61,8 +61,7 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
      * @param optCounty is an optional part of the address if they have a second address
      * @param optEircode is an optional part of the address if they have a second address
      
-     * @return ArrayList with users from the db matching the first and last name
-     * parameters
+     * @return boolean indicating success or failure
      */
     @Override
     public boolean addAddress(int userID, String primaryAddressLine1, String primaryAddressLine2, String PrimaryTown, String primaryCounty, String primaryEircode, String optAddressLine1, String optAddressLine2, String optTown, String optCounty, String optEircode) {
@@ -125,10 +124,10 @@ public class AddressDAO extends DatabaseConnection implements AddressDAOInterfac
     }
    
     /**
-     *This method will return a list of addresses by 
-     * matching with the specific user id 
+     *This method will return a list of addresses using the userID as a parameter
+     * 
      * @param userID the user id
-     * @return a list of addresses stored to the database
+     * @return a arraylist of address(s) of the user
      */
     @Override
     public ArrayList<Address> getAddressesByID(int userID){
