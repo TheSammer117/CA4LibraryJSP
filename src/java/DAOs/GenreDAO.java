@@ -44,7 +44,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                 result = true;
             }
         } catch (SQLException e) {
-            System.out.println("ERROR ON addGenre() method, " + e.getMessage());
+            System.out.println("ERROR ON addGenre() method, line 1 " + e.getMessage());
         } finally {
             try {
                 if (ps != null) {
@@ -54,7 +54,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                     freeConnection(con);
                 }
             } catch (SQLException ex) {
-                System.out.println("ERROR ON addGenre() method, " + ex.getMessage());
+                System.out.println("ERROR ON addGenre() method, line 2 " + ex.getMessage());
             }
         }
 
@@ -80,7 +80,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                 gList.add(g);
             }
         } catch (SQLException ex) {
-            System.out.println("ERROR ON getAllGenre() method, " + ex.getMessage());
+            System.out.println("ERROR ON getAllGenre() method, line 1 " + ex.getMessage());
         } finally {
             try {
                 if (rs != null) {
@@ -93,7 +93,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                     freeConnection(con);
                 }
             } catch (SQLException ex) {
-                System.out.println("ERROR ON getAllGenre() method, " + ex.getMessage());
+                System.out.println("ERROR ON getAllGenre() method,line 2  " + ex.getMessage());
             }
         }
         return gList;
@@ -117,7 +117,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                 g = new Genre(rs.getInt("genreID"), rs.getString("genre"));
             }
         } catch(SQLException e){
-            System.out.println("ERROR ON searchGenreByid() method, " + e.getMessage());
+            System.out.println("ERROR ON searchGenreByid() method, line 1" + e.getMessage());
         } finally{
             try{
                 if(rs != null){
@@ -130,7 +130,7 @@ public class GenreDAO extends DatabaseConnection implements GenreDAOInterface{
                     freeConnection(conn);
                 }
             } catch(SQLException e){
-                System.out.println("ERROR ON searchGenreByid() method, " + e.getMessage());
+                System.out.println("ERROR ON searchGenreByid() method, line 2" + e.getMessage());
             }
         }
         return g;
