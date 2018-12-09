@@ -69,6 +69,9 @@ public class CommandFactory {
                 case "viewBookDetails":
                     command = new ViewTitleDetailCommand();
                     break;
+                case "editBookDetails":
+                    command = new EditTitleDetailCommand();
+                    break;
                 default:
                     command = new NoValidActionCommand();
                     break;
