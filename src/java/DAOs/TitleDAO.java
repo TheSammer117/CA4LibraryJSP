@@ -273,8 +273,8 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
 
     /**
      *
-     * Updates a exited Title in the database matching the specified titleID,
-     * The method should return true if it updates the values to the table.
+     * Updates a exited Title from the database by the specified titleID,
+     * The method should return true if the values updated to the table.
      *
      * @param id The ID of title to find the specified row from database
      * @param title
