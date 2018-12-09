@@ -21,27 +21,42 @@ import static org.junit.Assert.*;
  */
 public class UserDAOTest {
     
+    /**
+     *
+     */
     public UserDAOTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of login method, of class UserDAO.
+     * Checking if a user can login to our website...
      */
     
     @Test
@@ -62,7 +77,7 @@ public class UserDAOTest {
     }
 
     /**
-     * Test of register method, of class UserDAO.
+     * checking if adding a new user to the database works and also if adding a new address works.
      */
     @Test
     public void testRegister() {
@@ -90,7 +105,7 @@ public class UserDAOTest {
     }
 
     /**
-     * Test of disableUser method, of class UserDAO.
+     * checking if Disabling a user from the database works.
      */
     @Test
     public void testDisableUser() {
@@ -105,7 +120,7 @@ public class UserDAOTest {
     }
 
     /**
-     * Test of showAllUser method, of class UserDAO.
+     * Checking if we can get all users in user table from our database..
      */
     @Test
     public void testShowAllUser() {
@@ -121,7 +136,7 @@ public class UserDAOTest {
     }
 
     /**
-     * Test of getUserByEmail method, of class UserDAO.
+     * Checking if Searching a user by using an email works.
      */
     @Test
     public void testGetUserByEmail() {
@@ -142,7 +157,7 @@ public class UserDAOTest {
     }
 
     /**
-     * Test of findUserByID method, of class UserDAO.
+     * Searching a user by using userID.
      */
     @Test
     public void testFindUserByID() {
@@ -161,7 +176,11 @@ public class UserDAOTest {
         User result = instance.findUserByID(userID);
         assertEquals(expResult, result);
     }
-      @Test
+
+    /**
+     *if userID does not exist it not return anything to the user...
+     */
+    @Test
     public void test2FindUserByID() {
         System.out.println("TEST 2 FOR FIND USER BY ID, AIM TO FAIL");
         int userID = 9999;
@@ -180,7 +199,7 @@ public class UserDAOTest {
     }
 
     /**
-     * Test of updateUserProfile method, of class UserDAO.
+     * Checking if updating user works and also update address works
      */
     @Test
     public void testUpdateUserProfile() {

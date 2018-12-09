@@ -20,21 +20,36 @@ import static org.junit.Assert.*;
  */
 public class AddressDAOTest {
     
+    /**
+     *
+     */
     public AddressDAOTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -65,7 +80,11 @@ public class AddressDAOTest {
         boolean result = instance.addAddress(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
     }
-     @Test
+
+    /**
+     * When a user is registering into our website all primary must be filled. This is so that they can show some information other than their user info..
+     */
+    @Test
         public void test2AddAddress() {
         System.out.println("TEST 1 TO ADD ADDRESS TO THE DATABASE. (AIM TO GET ERRORS (GET ERRORS WHEN PRIMARY ARE NOT FILLED))");
         int userID = 1;
@@ -84,7 +103,11 @@ public class AddressDAOTest {
         boolean result = instance.addAddress(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
     }
-         @Test
+
+    /**
+     * This is to check if will still pass without optional entry. Optional entry is just extra incase user has another address. 
+     */
+    @Test
           public void test3AddAddress() {
         System.out.println("TEST 1 TO ADD ADDRESS TO THE DATABASE. AIM TO PASS WHEN OPTIONAL ARE NOT FILLED)");
         int userID = 2;
@@ -111,6 +134,10 @@ public class AddressDAOTest {
     //******************* START HERE ***********************************
     // Test of getAddressesByID method, of class AddressDAO ..............................
     //******************* START HERE ***********************************
+
+    /**
+     * Test to Search for address by address id. when address id does exist in database user should get an address.
+     */
     @Test
     public void testGetAddressesByID() {
         System.out.println("TEST 1 FOR GET ADDRESS BY ID. AIM TO PASS (PASS WHEN ID DOES EXIST)");
@@ -122,7 +149,11 @@ public class AddressDAOTest {
         ArrayList<Address> result = instance.getAddressesByID(userID);
         assertEquals(expResult, result);
     }
-     @Test
+
+    /**
+     * Test for if user does not exist. This is to prevent non-existing user to appear.
+     */
+    @Test
     public void test2GetAddressesByID() {
         System.out.println("TEST 2 FOR GET ADDRESS BY ID. AIM TO FAIL (FAIL WHEN ID DOES NOT EXIST)");
         int userID = 9999;
@@ -140,15 +171,19 @@ public class AddressDAOTest {
      //******************* START HERE ***********************************
     // Test of updateAddressById method, of class AddressDAO. ..............................
     //******************* START HERE ***********************************
+
+    /**
+     * Updating address by using userID. 
+     */
     @Test
     public void testUpdateAddressById() {
         System.out.println("TEST 1 FOR UPDATE ADDRESS BY ID. THIS IS TO CHECK IF THIS MOTHOD WORKS");
         int userID = 4;
-        String primaryAddressLine1 = "123. eastwood";
+        String primaryAddressLine1 = "123. eastwood2";
         String primaryAddressLine2 = null;
-        String PrimaryTown = "Carlingford";
-        String primaryCounty = "Co. Louth";
-        String primaryEircode = "c15dn20";
+        String PrimaryTown = "Carlingford2";
+        String primaryCounty = "Co. Louth2";
+        String primaryEircode = "c15dn202";
         String optAddressLine1 = null;
         String optAddressLine2 = null;
         String optTown = null;
@@ -159,6 +194,10 @@ public class AddressDAOTest {
         boolean result = instance.updateAddressById(userID, primaryAddressLine1, primaryAddressLine2, PrimaryTown, primaryCounty, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCounty, optEircode);
         assertEquals(expResult, result);
       }
+
+    /**
+     * If userID does not exist is should not go through.
+     */
     @Test
     public void test2UpdateAddressById() {
         System.out.println("TEST 2 FOR UPDATE ADDRESS BY ID. CHECK IF IT FAILS IF ID DOES NOT EXIST");

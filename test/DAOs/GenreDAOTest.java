@@ -17,25 +17,40 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Helvin
+ * @author d00182295
  */
 public class GenreDAOTest {
     
+    /**
+     *
+     */
     public GenreDAOTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -44,6 +59,10 @@ public class GenreDAOTest {
     //******************* START HERE ***********************************
     // Test of addGenre method, of class GenreDAO. . ..............................
     //******************* START HERE ***********************************
+
+    /**
+     * Check if adding a genre to the database will work
+     */
     @Test
     public void test1AddGenre() {
         System.out.println("TEST 1 FOR ADD GENRE, THIS IS A TEST FOR PASS");
@@ -63,6 +82,10 @@ public class GenreDAOTest {
     //******************* START HERE ***********************************
     // Test of getAllGenre method, of class GenreDAO. . ..............................
     //******************* START HERE ***********************************
+
+    /**
+     * get all the genre in database ... 
+     */
     @Test
     public void testGetAllGenre() {
         System.out.println("TEST TO SEE IF GET ALL GENRE WORKS...");
@@ -85,6 +108,10 @@ public class GenreDAOTest {
     //******************* START HERE ***********************************
     // Test of searchGenreByid method, of class GenreDAO. . ..............................
     //******************* START HERE ***********************************
+
+    /**
+     * search genre by id on database....
+     */
     @Test
     public void test1SearchGenreByid() {
         System.out.println("TEST 1 SEARCH GENRE BY ID, AIM TO PASS..");
@@ -95,7 +122,11 @@ public class GenreDAOTest {
         Genre result = instance.searchGenreByid(genreID);
         assertEquals(expResult, result); 
     }
-       @Test
+
+    /**
+     * if id does not exist it should not return anything and fail the test
+     */
+    @Test
     public void test2SearchGenreByid() {
         System.out.println("TEST 2 SEARCH GENRE BY ID, AIM TO FAIL..");
         

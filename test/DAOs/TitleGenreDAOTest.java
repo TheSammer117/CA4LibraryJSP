@@ -23,21 +23,36 @@ import static org.junit.Assert.*;
  */
 public class TitleGenreDAOTest {
     
+    /**
+     *
+     */
     public TitleGenreDAOTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @Before
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @After
     public void tearDown() {
     }
@@ -46,6 +61,10 @@ public class TitleGenreDAOTest {
     //******************* START HERE ***********************************
     // Test of addTitlegenre method, of class TitleGenreDAO. . ..............................
     //******************* START HERE ***********************************
+
+    /**
+     * checking if adding a new title genre to our database works...
+     */
     @Test
     public void testAddTitlegenre() {
         System.out.println("TEST 1 FOR ADD TITLE GENRE, CHECK IF THIS WORKS...");
@@ -61,6 +80,10 @@ public class TitleGenreDAOTest {
     //******************* START HERE ***********************************
     // Test of getGenreByTitleID method, of class TitleGenreDAO. . ..............................
     //******************* START HERE ***********************************
+
+    /**
+     * searching a genre using titleID ...
+     */
     @Test
     public void testGetGenreByTitleID() {
         System.out.println("TEST 1 FOR GET GENRE BY TITLE ID, AIM TO PASS");
@@ -70,6 +93,10 @@ public class TitleGenreDAOTest {
         String result = instance.getGenreByTitleID(titleID);
         assertEquals(expResult, result);
     }
+
+    /**
+     * if TitleId does not exist is should not return anything to the user..
+     */
     @Test
     public void test2GetGenreByTitleID() {
         System.out.println("TEST 2 FOR GET GENRE BY TITLE ID, AIM TO FAIL");
@@ -83,6 +110,10 @@ public class TitleGenreDAOTest {
     //******************* START HERE ***********************************
     // Test of getAllTitlegenre method, of class TitleGenreDAO. . ..............................
     //******************* START HERE ***********************************
+
+    /**
+     *  Checking if we can get all title Genre from our database....
+     */
     @Test
     public void testGetAllTitlegenre() {
         System.out.println("TEST 1 FOR GET ALL TITLE GENRE, TEST IT WORKS..");
