@@ -31,6 +31,7 @@ public class TitleDAO extends DatabaseConnection implements TitleDAOInterface {
      * @param databaseName The name of the MySQL database to be accessed (this
      * database should be running on localhost and listening on port 3306).
      */
+    
     /**
      * Returns a list of Title objects based on information in the database. All
      * titles entries in the Title table are selected from the database and
