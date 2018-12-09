@@ -61,7 +61,7 @@ public class CommandFactory {
                     command = new ViewPreviousLoanCommand();
                     break;
                 case "payOverdueFee":
-                    
+                    command = new PayOverdueFeeCommand();
                     break;
                 default:
                     command = new NoValidActionCommand();
