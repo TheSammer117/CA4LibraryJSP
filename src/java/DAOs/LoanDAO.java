@@ -295,7 +295,62 @@ public class LoanDAO extends DatabaseConnection implements LoanDAOInterface {
         return loanList;
     }
     
-    
+    /**
+     * This is used to get all titles currently on loan
+     *
+     * @param userID
+     * @return ArrayList of loan objects
+     */
+    @Override
+    public ArrayList<Loan> getPreviousLoansByUserID(int userID) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Loan loan = null;
+        UserDAO ud = new UserDAO("librarydb");
+        TitleDAO td = new TitleDAO("librarydb");
+        ArrayList<Loan> loanList = new ArrayList();
+
+        try {
+            conn = getConnection();
+            String query = "SELECT * FROM loan WHERE userID = ? AND status = 1";
+            ps = conn.prepareStatement(query);
+
+            ps.setInt(1, userID);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                loan = new Loan();
+                // Get the pieces of a customer from the resultset
+                loan.setLoanID(rs.getInt("loanID"));
+                loan.setUser(ud.findUserByID(rs.getInt("userID")));
+                loan.setTitle(td.searchByID(rs.getInt("titleID")));
+                loan.setStatus(rs.getInt("status"));
+                loanList.add(loan);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Exception occured in the getLoanStatusByUserID() method");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (conn != null) {
+                    freeConnection(conn);
+                }
+            } catch (SQLException e) {
+                System.out.println("Exception occured in the finally section in the getLoanStatusByUserID() method " + e.getMessage());
+            }
+        }
+
+        return loanList;
+    }
 
     /**
      * Used to return a specific loan object by its ID

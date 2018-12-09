@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Haiyun Yu d00188956
  */
-public class ReturnBookCommand implements Command {
+public class ReturnTitleCommand implements Command {
 
     @Override
     public String exceute(HttpServletRequest request, HttpServletResponse response) {
