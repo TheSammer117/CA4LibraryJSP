@@ -50,7 +50,11 @@ public class EditUserDetailsCommand implements Command {
             try{
             UserDAO uDAO = new UserDAO("librarydb") ;
             //aedit user details
-            int edited = uDAO.updateUserProfile(email, password, firstName, lastName, primaryAddressLine1, primaryAddressLine2, primaryTown, primaryCountry, primaryEircode, optAddressLine1, optAddressLine2, optTown, optCountry, optEircode);
+            int edited = uDAO.updateUserProfile(email, password, firstName, 
+                    lastName, primaryAddressLine1, primaryAddressLine2, 
+                    primaryTown, primaryCountry, primaryEircode, 
+                    optAddressLine1, optAddressLine2, 
+                    optTown, optCountry, optEircode);
             //get session so that we can hold the edited user details;
             HttpSession session = request.getSession();
             session.setAttribute("userEdited", edited);
