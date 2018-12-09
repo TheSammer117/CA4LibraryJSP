@@ -18,6 +18,7 @@ public interface LoanDAOInterface {
     public ArrayList<Loan> getAllLoansByUserID(int userID);
     public boolean updateLoanStatus (int BorrowedID, int status);
     public ArrayList<Loan> getActiveLoansByUserID(int userID);
+     public ArrayList<Loan> getPreviousLoansByUserID(int userID);
     public Loan getLoanByID(int borrowedID);
     public Title getTitleByLoanID(int loanID);
     
