@@ -11,8 +11,9 @@
         <%@include file = "/includes/header.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%=dataBundle.getString("index_title")%></title>
+        
     </head>
     <body>
-      
+          <%/**@include file="/includes/login.jsp" */%>
     </body>
 </html>

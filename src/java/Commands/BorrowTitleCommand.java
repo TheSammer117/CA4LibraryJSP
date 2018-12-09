@@ -24,7 +24,7 @@ public class BorrowTitleCommand implements Command {
 
     @Override
     public String exceute(HttpServletRequest request, HttpServletResponse response) {
-        String forwardToJsp = "";
+       String forwardToJsp = "";
         
         //get the parameters while user required to borrow a title;
         int titleID = Integer.parseInt(request.getParameter("titleID"));
